@@ -1,17 +1,19 @@
 name: Build Docker images
 
-on: [push]
+on:
+  push:
+    branches: [ "master" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Publish to Github Docker registry
-      uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: robinj1995/mariadb-backup-to-s3/mariadb-backup-to-s3
-        registry: ghcr.io
-        username: RobinJ1995
-        password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        snapshot: true
+      - uses: actions/checkout@master
+      - name: Publish to Github Docker registry
+        uses: elgohr/Publish-Docker-Github-Action@v5
+        with:
+          name: robinj1995/mariadb-backup-to-s3/mariadb-backup-to-s3
+          registry: ghcr.io
+          username: RobinJ1995
+          password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          snapshot: true
