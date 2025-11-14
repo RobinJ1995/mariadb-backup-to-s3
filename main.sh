@@ -23,7 +23,7 @@ test -f "$output_filename"
 test -s "$output_filename"
 
 echo '== Compress =='
-zstd --ultra -22 "$output_filename"
+zstd -6 "$output_filename"
 compressed_output_filename="${output_filename}.zst"
 test -f "$compressed_output_filename"
 test -s "$compressed_output_filename"
